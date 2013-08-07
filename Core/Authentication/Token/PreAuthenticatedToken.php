@@ -10,6 +10,7 @@
  */
 
 namespace Symfony\Component\Security\Core\Authentication\Token;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * PreAuthenticatedToken implements a pre-authenticated token.
@@ -23,8 +24,14 @@ class PreAuthenticatedToken extends AbstractToken
 
     /**
      * Constructor.
+     *
+     * @param UserInterface $user
+     * @param $credentials
+     * @param $providerKey
+     * @param array $roles
+     * @throws \InvalidArgumentException
      */
-    public function __construct($user, $credentials, $providerKey, array $roles = array())
+    public function __construct(UserInterface $user, $credentials, $providerKey, array $roles = array())
     {
         parent::__construct($roles);
 
